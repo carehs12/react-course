@@ -5,7 +5,7 @@ import Card from "./Card";
 
 function ExpensesList(props) {
    return (
-      <Card class="expenses-list">
+      <Card className="expenses-list">
          <ExpenseItem
             title={props.expenses[0].title}
             amount={props.expenses[0].amount}
