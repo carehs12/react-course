@@ -4,7 +4,7 @@ import ExpenseItem from "./ExpenseItem";
 
 function ExpensesList(props) {
    return (
-      <div class="expenses">
+      <div class="expenses-list">
          <ExpenseItem
             title={props.expenses[0].title}
             amount={props.expenses[0].amount}
