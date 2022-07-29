@@ -1,4 +1,4 @@
-
+// import React from "react";
 import ExpensesList from "./components/ExpensesList";
 
 function App() {
@@ -15,6 +15,14 @@ function App() {
          <ExpensesList expenses={expenses}></ExpensesList>
       </div>
    );
+
+   // Alternative Code
+   // return React.createElement(
+   //    "div",
+   //    {},
+   //    React.createElement("h2", {}, "Let's get started!"),
+   //    React.createElement(ExpensesList, {expenses: expenses}),
+   // );
 }
 
 export default App;
