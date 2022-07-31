@@ -4,49 +4,60 @@ import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
    // We manage separate states for every field on the form
-   // const [title, setTitle] = useState('');
-   // const [amount, setAmount] = useState('');
-   // const [date, setDate] = useState('');
+   const [title, setTitle] = useState("");
+   const [amount, setAmount] = useState("");
+   const [date, setDate] = useState("");
 
    // We manage just one state for all fields on the form
-   const [expense, setExpense] = useState({ title: "", amount: "", date: "" });
+   // const [expense, setExpense] = useState({ title: "", amount: "", date: "" });
 
    const titleChangeHandler = (event) => {
       // When the new state deppends on the old state, we should not do this
-      // setExpense({
-      //    ...expense,
-      //    title: event.target.value
-      // });
+      setTitle(event.target.value);
 
       // We instead should do this
-      setExpense((prevExpense) => {
-         return {
-            ...prevExpense,
-            title: event.target.value,
-         };
-      });
+      // setExpense((prevExpense) => {
+      //    return {
+      //       ...prevExpense,
+      //       title: event.target.value,
+      //    };
+      // });
    };
 
    const amountChangeHandler = (event) => {
-      setExpense((prevExpense) => {
-         return {
-            ...prevExpense,
-            amount: event.target.value,
-         };
-      });
+      setAmount(event.target.value);
+
+      // setExpense((prevExpense) => {
+      //    return {
+      //       ...prevExpense,
+      //       amount: event.target.value,
+      //    };
+      // });
    };
 
    const dateChangeHandler = (event) => {
-      setExpense((prevExpense) => {
-         return {
-            ...prevExpense,
-            date: event.target.value,
-         };
-      });
+      setDate(event.target.value);
+
+      // setExpense((prevExpense) => {
+      //    return {
+      //       ...prevExpense,
+      //       date: event.target.value,
+      //    };
+      // });
    };
 
    const submitHandler = (event) => {
       event.preventDefault();
+
+      const expense = {
+         title: title,
+         amount: amount,
+         date: new Date(date),
+      };
+
+      setTitle("");
+      setAmount("");
+      setDate("");
 
       console.log(JSON.stringify(expense));
    };
@@ -56,7 +67,7 @@ const ExpenseForm = () => {
          <div className="new-expense__controls">
             <div className="new-expense__control">
                <label>Title</label>
-               <input type="text" onChange={titleChangeHandler} />
+               <input type="text" value={title} onChange={titleChangeHandler} />
             </div>
 
             <div className="new-expense__control">
@@ -65,6 +76,7 @@ const ExpenseForm = () => {
                   type="number"
                   step="0.01"
                   min="0.01"
+                  value={amount}
                   onChange={amountChangeHandler}
                />
             </div>
@@ -75,6 +87,7 @@ const ExpenseForm = () => {
                   type="date"
                   min="2019-01-01"
                   max="2022-12-31"
+                  value={date}
                   onChange={dateChangeHandler}
                />
             </div>
