@@ -2,7 +2,10 @@ import { useState } from "react";
 
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
+   // Event handlers
+   const onSubmitExpense = props.onSubmitExpense;
+
    // We manage separate states for every field on the form
    const [title, setTitle] = useState("");
    const [amount, setAmount] = useState("");
@@ -59,7 +62,7 @@ const ExpenseForm = () => {
       setAmount("");
       setDate("");
 
-      console.log(JSON.stringify(expense));
+      onSubmitExpense(expense);
    };
 
    return (
